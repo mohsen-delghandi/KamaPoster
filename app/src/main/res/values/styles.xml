@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="style_login_textView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">68.9px</item>
+        <item name="android:background">@drawable/shape_login_background</item>
+        <item name="android:textColorHint">@color/color_text</item>
+        <item name="android:textSize">28.1px</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+</resources>

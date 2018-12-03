@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/color_all_background">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/img_all_background"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="515.8px"
+        android:gravity="center_horizontal"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:layout_width="137.7px"
+            android:layout_height="196.8px"
+            android:src="@drawable/img_all_logo"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="222.1px"/>
+
+        <EditText
+            style="@style/style_login_textView"
+            android:layout_marginTop="71.7px"
+            android:fontFamily="@font/iran_yekan_light"
+            android:hint="شماره همراه"
+            android:inputType="phone" />
+
+        <EditText
+            style="@style/style_login_textView"
+            android:fontFamily="@font/iran_yekan_light"
+            android:layout_marginTop="28.1px"
+            android:hint="کلمه عبور"
+            android:inputType="textPassword"/>
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="68.9px"
+            android:layout_marginTop="28.1px"
+            android:background="@drawable/shape_gradient_background"
+            android:textSize="28.1px"
+            android:textColor="@color/color_text"
+            android:text="ورود"
+            android:fontFamily="@font/iran_yekan_light"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|bottom">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="29px"
+                android:text="Kamaposter All Right Reserved | 2018"
+                android:textColor="@color/color_text"
+                android:gravity="center"
+                android:textSize="16.9px"
+                android:fontFamily="@font/iran_yekan_light"
+                android:layout_marginBottom="23.9px"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
