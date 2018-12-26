@@ -4,5 +4,9 @@
     <dimen name="dimen_category_main_small_items_width">291px</dimen>
     <dimen name="dimen_category_main_big_items_height">420px</dimen>
     <dimen name="dimen_category_main_big_items_width">441px</dimen>
+    <dimen name="dimen_category_nature_items_width">444px</dimen>
+    <dimen name="dimen_category_nature_items_height">419px</dimen>
+    <dimen name="dimen_categories_padding_bottom">50px</dimen>
+    <dimen name="dimen_category_main_margin_left">30px</dimen>
 
 </resources>

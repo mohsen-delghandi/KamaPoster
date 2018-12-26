@@ -9,13 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainCategoryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".GraphiteAndSpecialCategoryActivity"/>
+        <activity android:name=".NatureCategoryActivity"/>
+        <activity android:name=".KidsCategoryActivity"/>
+        <activity android:name=".CityAndClassicCategoryActivity"/>
+        <activity android:name=".FaceImagesAndSportCategoryActivity"/>
+        <activity android:name=".BackgroundsCategoryActivity"/>
     </application>
 
 </manifest>
