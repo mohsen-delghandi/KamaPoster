@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_category_main_small_items_height">276px</dimen>
+    <dimen name="dimen_category_main_small_items_width">291px</dimen>
+    <dimen name="dimen_category_main_big_items_height">420px</dimen>
+    <dimen name="dimen_category_main_big_items_width">441px</dimen>
+
+</resources>
