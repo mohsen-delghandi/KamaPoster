@@ -1,1 +1,1 @@
-include ':app', 'wave-view'
+include ':app'

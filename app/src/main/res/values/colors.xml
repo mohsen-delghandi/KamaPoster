@@ -5,7 +5,7 @@
     <color name="colorAccent">#ff4081</color>
 
     <color name="color_all_background">#27262b</color>
-    <color name="color_login_textView_backgorund">#35000000</color>
+    <color name="color_login_textView_background">#35000000</color>
     <color name="color_login_textView_border">#000</color>
     <color name="color_text">#fff</color>
 </resources>

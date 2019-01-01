@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "ir.heyzha.www.kamaposter"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -21,7 +21,8 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation project(':wave-view')
-
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.veinhorn.scrollgalleryview:library:1.0.8'
 }
