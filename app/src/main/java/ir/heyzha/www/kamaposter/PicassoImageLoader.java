@@ -7,14 +7,21 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.veinhorn.scrollgalleryview.loader.MediaLoader;
 
+import java.io.File;
+
 /**
  * Created by veinhorn on 2/4/18.
  */
 
 public class PicassoImageLoader implements MediaLoader {
     private String url;
+//    private File file;
     private Integer thumbnailWidth;
     private Integer thumbnailHeight;
+
+//    public PicassoImageLoader(File file) {
+//        this.file = file;
+//    }
 
     public PicassoImageLoader(String url) {
         this.url = url;
@@ -33,15 +40,15 @@ public class PicassoImageLoader implements MediaLoader {
 
     @Override
     public void loadMedia(Context context, final ImageView imageView, final MediaLoader.SuccessCallback callback) {
-        Picasso.with(context)
+        Picasso.get()
                 .load(url)
-                .placeholder(R.drawable.placeholder_image)
+//                .placeholder(R.drawable.placeholder_image)
                 .into(imageView, new ImageCallback(callback));
     }
 
     @Override
     public void loadThumbnail(Context context, final ImageView thumbnailView, final MediaLoader.SuccessCallback callback) {
-        Picasso.with(context)
+        Picasso.get()
                 .load(url)
                 .resize(thumbnailWidth == null ? 100 : thumbnailWidth,
                         thumbnailHeight == null ? 100 : thumbnailHeight)
@@ -63,7 +70,7 @@ public class PicassoImageLoader implements MediaLoader {
         }
 
         @Override
-        public void onError() {
+        public void onError(Exception e) {
 
         }
     }

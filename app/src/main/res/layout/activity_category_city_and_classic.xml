@@ -1,62 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
-    android:gravity="center"
     android:background="@drawable/img_background"
+    android:gravity="center"
+    android:layoutDirection="rtl"
     android:paddingBottom="@dimen/dimen_categories_padding_bottom">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="@dimen/dimen_category_nature_items_width"
-            android:layout_height="@dimen/dimen_category_nature_items_height"
-            android:src="@drawable/img_business"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="@dimen/dimen_category_nature_items_width"
-            android:layout_height="@dimen/dimen_category_nature_items_height"
-            android:src="@drawable/img_map"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
+            <ImageView
+                android:layout_width="@dimen/dimen_category_nature_items_width"
+                android:layout_height="@dimen/dimen_category_nature_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_business" />
 
-        <ImageView
-            android:layout_width="@dimen/dimen_category_nature_items_width"
-            android:layout_height="@dimen/dimen_category_nature_items_height"
-            android:src="@drawable/img_city"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
+            <ImageView
+                android:layout_width="@dimen/dimen_category_nature_items_width"
+                android:layout_height="@dimen/dimen_category_nature_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_map" />
+
+            <ImageView
+                android:layout_width="@dimen/dimen_category_nature_items_width"
+                android:layout_height="@dimen/dimen_category_nature_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_city" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_category_nature_items_width"
+                android:layout_height="@dimen/dimen_category_nature_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_ceiling_images" />
+
+            <ImageView
+                android:layout_width="@dimen/dimen_category_nature_items_width"
+                android:layout_height="@dimen/dimen_category_nature_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_traditional" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+    <ImageView
+        android:id="@+id/imageView_back"
+        android:layout_width="276px"
+        android:layout_height="49px"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dimen_categories_padding_bottom"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_back" />
 
-        <ImageView
-            android:layout_width="@dimen/dimen_category_nature_items_width"
-            android:layout_height="@dimen/dimen_category_nature_items_height"
-            android:src="@drawable/img_ceiling_images"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:layout_width="@dimen/dimen_category_nature_items_width"
-            android:layout_height="@dimen/dimen_category_nature_items_height"
-            android:src="@drawable/img_traditional"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

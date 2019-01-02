@@ -1,55 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
-    android:gravity="center"
     android:background="@drawable/img_background"
+    android:gravity="center"
+    android:layoutDirection="rtl"
     android:paddingBottom="@dimen/dimen_categories_padding_bottom">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="@dimen/dimen_category_nature_items_width"
-            android:layout_height="@dimen/dimen_category_nature_items_height"
-            android:src="@drawable/img_cartoon_character"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="@dimen/dimen_category_nature_items_width"
-            android:layout_height="@dimen/dimen_category_nature_items_height"
-            android:src="@drawable/img_game_characters"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
+            <ImageView
+                android:id="@+id/imageView_cartoon_character"
+                android:layout_width="@dimen/dimen_category_nature_items_width"
+                android:layout_height="@dimen/dimen_category_nature_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_cartoon_character" />
+
+            <ImageView
+                android:id="@+id/imageView_game_character"
+                android:layout_width="@dimen/dimen_category_nature_items_width"
+                android:layout_height="@dimen/dimen_category_nature_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_game_character" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_kiddy"
+                android:layout_width="@dimen/dimen_category_nature_items_width"
+                android:layout_height="@dimen/dimen_category_nature_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_kiddy" />
+
+            <ImageView
+                android:id="@+id/imageView_highlight"
+                android:layout_width="@dimen/dimen_category_nature_items_width"
+                android:layout_height="@dimen/dimen_category_nature_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_highlight" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+    <ImageView
+        android:id="@+id/imageView_back"
+        android:layout_width="276px"
+        android:layout_height="49px"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/dimen_categories_padding_bottom"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_back" />
 
-        <ImageView
-            android:layout_width="@dimen/dimen_category_nature_items_width"
-            android:layout_height="@dimen/dimen_category_nature_items_height"
-            android:src="@drawable/img_kiddy"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:layout_width="@dimen/dimen_category_nature_items_width"
-            android:layout_height="@dimen/dimen_category_nature_items_height"
-            android:src="@drawable/img_highlight"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

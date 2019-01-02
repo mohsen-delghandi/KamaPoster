@@ -70,6 +70,7 @@
         android:layout_marginLeft="@dimen/dimen_category_main_margin_left">
 
         <ImageView
+            android:id="@+id/imageView_luxury_2019"
             android:layout_width="@dimen/dimen_category_main_big_items_width"
             android:layout_height="@dimen/dimen_category_main_big_items_height"
             android:src="@drawable/img_luxury_2019"

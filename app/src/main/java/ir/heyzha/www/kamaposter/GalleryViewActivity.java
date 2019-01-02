@@ -1,40 +1,52 @@
 package ir.heyzha.www.kamaposter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.veinhorn.scrollgalleryview.MediaInfo;
 import com.veinhorn.scrollgalleryview.ScrollGalleryView;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GalleryViewActivity extends FragmentActivity {
 
-
-    private ScrollGalleryView scrollGalleryView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.album_activity_gallery);
 
-        ArrayList<String> images = new ArrayList<>(Arrays.asList(
-                getFilesDir().getPath() +"/images_luxury_2019/A3000-copy.jpg",
-                "https://dkstatics-public.digikala.com/digikala-adservice-banners/5221.jpg",
-                "https://dkstatics-public.digikala.com/digikala-adservice-banners/5217.jpg",
-                "https://dkstatics-public.digikala.com/digikala-adservice-banners/5262.jpg"
-        ));
+        ImageView imageViewBack;
+        imageViewBack = findViewById(R.id.imageView_back);
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
-        Toast.makeText(this, getFilesDir().getPath() +"/images_luxury_2019/A3000-copy.jpg", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent();
+        intent = getIntent();
+        String folderName = intent.getExtras().getString("category");
+        String folderPath = getExternalFilesDir("jpg").getPath() + "/images/";
+
+        File file = new File(folderPath + folderName);
+        String[] files = file.list();
+
+        ArrayList<String> images = new ArrayList<>(files.length);
+        for (String temporaryFile : files)
+            images.add("file://" + folderPath + folderName + "/" + temporaryFile);
+
 
         List<MediaInfo> infos = new ArrayList<>(images.size());
         for (String url : images) infos.add(MediaInfo.mediaLoader(new PicassoImageLoader(url)));
 
-        scrollGalleryView = findViewById(R.id.scroll_gallery_view);
+        ScrollGalleryView scrollGalleryView = findViewById(R.id.scroll_gallery_view);
         scrollGalleryView
                 .setThumbnailSize(100)
                 .setZoom(false)

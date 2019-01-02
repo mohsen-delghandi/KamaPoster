@@ -13,6 +13,7 @@ public class MainCategoryActivity extends AppCompatActivity {
             imageViewBacksAnd3dBackgrounds,
             imageViewKid,
             imageViewCityAndClassic,
+            imageViewLuxury2019,
             imageViewGraphiteAndSpecialImages;
 
     @Override
@@ -25,6 +26,7 @@ public class MainCategoryActivity extends AppCompatActivity {
         imageViewBacksAnd3dBackgrounds = findViewById(R.id.imageView_backs_and_3d_backgrounds);
         imageViewKid = findViewById(R.id.imageView_kid);
         imageViewCityAndClassic = findViewById(R.id.imageView_city_and_classic);
+        imageViewLuxury2019 = findViewById(R.id.imageView_luxury_2019);
         imageViewGraphiteAndSpecialImages = findViewById(R.id.imageView_grahite_and_special_images);
 
         imageViewNature.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +57,7 @@ public class MainCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainCategoryActivity.this,KidsCategoryActivity.class);
+                i.putExtra("category","images_kid");
                 startActivity(i);
             }
         });
@@ -63,6 +66,15 @@ public class MainCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainCategoryActivity.this,CityAndClassicCategoryActivity.class);
+                startActivity(i);
+            }
+        });
+
+        imageViewLuxury2019.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainCategoryActivity.this,GalleryViewActivity.class);
+                i.putExtra("category","images_luxury_2019");
                 startActivity(i);
             }
         });
