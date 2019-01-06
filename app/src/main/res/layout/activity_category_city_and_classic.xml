@@ -70,9 +70,10 @@
         android:id="@+id/imageView_back"
         android:layout_width="276px"
         android:layout_height="49px"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="@dimen/dimen_categories_padding_bottom"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/dimen_categories_padding_bottom"
+        android:layout_marginTop="@dimen/dimen_categories_padding_bottom"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/img_back" />

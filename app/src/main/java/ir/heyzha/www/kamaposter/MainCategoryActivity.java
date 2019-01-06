@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -43,8 +42,60 @@ public class MainCategoryActivity extends AppCompatActivity {
         }
 
         String[] folderPaths = {
-                "images_luxury"
+                Constants.IMAGES_LUXURY_2019,
+
+                Constants.IMAGES_KID + "/" + Constants.IMAGES_KIDDY,
+                Constants.IMAGES_KID + "/" + Constants.IMAGES_HIGHLIGHT,
+                Constants.IMAGES_KID + "/" + Constants.IMAGES_GAME_CHARACTER,
+                Constants.IMAGES_KID + "/" + Constants.IMAGES_CARTOON_CHARACTER,
+
+                Constants.IMAGES_FACE_AND_SPORT + "/" + Constants.IMAGES_FUN,
+                Constants.IMAGES_FACE_AND_SPORT + "/" + Constants.IMAGES_MUSIC,
+                Constants.IMAGES_FACE_AND_SPORT + "/" + Constants.IMAGES_ROMANTIC,
+                Constants.IMAGES_FACE_AND_SPORT + "/" + Constants.IMAGES_CINEMA_CHARACTERS,
+                Constants.IMAGES_FACE_AND_SPORT + "/" + Constants.IMAGES_EYE_AND_LIP,
+                Constants.IMAGES_FACE_AND_SPORT + "/" + Constants.IMAGES_WOMAN,
+
+                Constants.IMAGES_PAPER_FLOWERS,
+
+                Constants.IMAGES_CITY_AND_CLASSIC + "/" + Constants.IMAGES_TRADITIONAL,
+                Constants.IMAGES_CITY_AND_CLASSIC + "/" + Constants.IMAGES_CEILING,
+                Constants.IMAGES_CITY_AND_CLASSIC + "/" + Constants.IMAGES_CITY,
+                Constants.IMAGES_CITY_AND_CLASSIC + "/" + Constants.IMAGES_MAP,
+                Constants.IMAGES_CITY_AND_CLASSIC + "/" + Constants.IMAGES_BUSINESS,
+
+                Constants.IMAGES_GRAPHITE_AND_SPECIAL + "/" + Constants.IMAGES_GRAPHITE,
+                Constants.IMAGES_GRAPHITE_AND_SPECIAL + "/" + Constants.IMAGES_STATUE_AND_WIND,
+                Constants.IMAGES_GRAPHITE_AND_SPECIAL + "/" + Constants.IMAGES_LUX,
+                Constants.IMAGES_GRAPHITE_AND_SPECIAL + "/" + Constants.IMAGES_MUSIC,
+
+                Constants.IMAGES_3D_FLOWERS,
+
+                Constants.IMAGES_ANIMALS,
+
+                Constants.IMAGES_NATURE + "/" + Constants.IMAGES_SPRING,
+                Constants.IMAGES_NATURE + "/" + Constants.IMAGES_SUMMER,
+                Constants.IMAGES_NATURE + "/" + Constants.IMAGES_AUTUMN,
+                Constants.IMAGES_NATURE + "/" + Constants.IMAGES_WINTER,
+                Constants.IMAGES_NATURE + "/" + Constants.IMAGES_WINDOW_AND_VIEW,
+                Constants.IMAGES_NATURE + "/" + Constants.IMAGES_ROCK_AND_WALL,
+                Constants.IMAGES_NATURE + "/" + Constants.IMAGES_FOUR_SEASONS,
+                Constants.IMAGES_NATURE + "/" + Constants.IMAGES_SEA_AND_BEACH,
+
+                Constants.IMAGES_SPORT,
+
+                Constants.IMAGES_SPRING_FLOWERS,
+
+                Constants.IMAGES_BACKS_AND_BACKGROUNDS + "/" + Constants.IMAGES_3D,
+                Constants.IMAGES_BACKS_AND_BACKGROUNDS + "/" + Constants.IMAGES_FLOWER_BACKS,
+                Constants.IMAGES_BACKS_AND_BACKGROUNDS + "/" + Constants.IMAGES_COLOR_BACKS,
+                Constants.IMAGES_BACKS_AND_BACKGROUNDS + "/" + Constants.IMAGES_3D_BACKS
         };
+
+        for (String folderPath : folderPaths)
+            folderMaker(folderPath);
+
+//        folderMaker(Constants.IMAGES_LUXURY_2019);
 
         imageViewNature = findViewById(R.id.imageView_nature);
         imageViewFaceAndSport = findViewById(R.id.imageView_face_and_sport);
@@ -114,7 +165,7 @@ public class MainCategoryActivity extends AppCompatActivity {
     }
 
     private void folderMaker(String folderPath) {
-        File file = new File(getExternalFilesDir(Constants.JPG).getPath() + "/"+ Constants.IMAGES+"/" +
+        File file = new File(getExternalFilesDir(Constants.JPG).getPath() + "/" + Constants.IMAGES + "/" +
                 folderPath);
         if (!file.exists())
             file.mkdirs();

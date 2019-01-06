@@ -34,16 +34,16 @@ public class Constants {
 
     public static final String IMAGES_GRAPHITE_AND_SPECIAL = "images_graphite_and_special";
 
-    public static final String IMAGES_GRAPHITE = "images_";
-    public static final String IMAGES_STATUE_AND_WIND = "images_";
-    public static final String IMAGES_LUX = "images_";
+    public static final String IMAGES_GRAPHITE = "images_graphite";
+    public static final String IMAGES_STATUE_AND_WIND = "images_statue_and_wind";
+    public static final String IMAGES_LUX = "images_lux";
 //initialized before :    public static final String IMAGES_MUSIC = "images_";
 
     public static final String IMAGES_3D_FLOWERS = "images_3d_flowers";
 
     public static final String IMAGES_ANIMALS = "images_animals";
 
-    public static final String IMAGES_NATURE = "images_";
+    public static final String IMAGES_NATURE = "images_nature";
 
     public static final String IMAGES_SPRING = "images_spring";
     public static final String IMAGES_SUMMER = "images_summer";

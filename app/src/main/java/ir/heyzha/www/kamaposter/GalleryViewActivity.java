@@ -47,7 +47,7 @@ public class GalleryViewActivity extends FragmentActivity {
 
         ScrollGalleryView scrollGalleryView = findViewById(R.id.scroll_gallery_view);
         scrollGalleryView
-                .setThumbnailSize(100)
+                .setThumbnailSize(175)
                 .setZoom(false)
                 .setFragmentManager(getSupportFragmentManager())
                 .addMedia(infos);
