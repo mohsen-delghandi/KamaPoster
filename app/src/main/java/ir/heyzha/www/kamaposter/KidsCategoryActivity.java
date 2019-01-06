@@ -39,32 +39,32 @@ public class KidsCategoryActivity extends AppCompatActivity {
         imageViewKiddy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToActivity("images_kiddy");
+                goToActivity(Constants.IMAGES_KIDDY);
             }
         });
         imageViewHighlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToActivity("images_highlight");
+                goToActivity(Constants.IMAGES_HIGHLIGHT);
             }
         });
         imageViewGameCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToActivity("images_game_character");
+                goToActivity(Constants.IMAGES_GAME_CHARACTER);
             }
         });
         imageViewCartoonCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToActivity("images_cartoon_character");
+                goToActivity(Constants.IMAGES_CARTOON_CHARACTER);
             }
         });
     }
 
     private void goToActivity(String category) {
         Intent i = new Intent(KidsCategoryActivity.this, GalleryViewActivity.class);
-        i.putExtra("category", intent.getExtras().getString("category") + "/" + category);
+        i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY) + "/" + category);
         startActivity(i);
     }
 }

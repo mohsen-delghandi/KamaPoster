@@ -30,10 +30,9 @@ public class GalleryViewActivity extends FragmentActivity {
             }
         });
 
-        Intent intent = new Intent();
-        intent = getIntent();
-        String folderName = intent.getExtras().getString("category");
-        String folderPath = getExternalFilesDir("jpg").getPath() + "/images/";
+        Intent intent = getIntent();
+        String folderName = intent.getExtras().getString(Constants.CATEGORY);
+        String folderPath = getExternalFilesDir(Constants.JPG).getPath() + "/" + Constants.IMAGES + "/";
 
         File file = new File(folderPath + folderName);
         String[] files = file.list();

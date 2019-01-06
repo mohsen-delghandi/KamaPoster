@@ -16,13 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GalleryViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".GalleryViewActivity"/>
         <activity android:name=".GraphiteAndSpecialCategoryActivity"/>
         <activity android:name=".NatureCategoryActivity"/>
         <activity android:name=".KidsCategoryActivity"/>
