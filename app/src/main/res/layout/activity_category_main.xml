@@ -15,6 +15,7 @@
         android:layout_marginLeft="@dimen/dimen_category_main_margin_left">
 
         <ImageView
+            android:id="@+id/imageView_spring_flowers"
             android:layout_width="@dimen/dimen_category_main_small_items_width"
             android:layout_height="@dimen/dimen_category_main_small_items_height"
             android:src="@drawable/img_spring_flowers"
@@ -39,6 +40,7 @@
         android:layout_marginLeft="35px">
 
         <ImageView
+            android:id="@+id/imageView_animals"
             android:layout_width="@dimen/dimen_category_main_small_items_width"
             android:layout_height="@dimen/dimen_category_main_small_items_height"
             android:src="@drawable/img_animals"
@@ -54,6 +56,7 @@
             android:adjustViewBounds="true"/>
 
         <ImageView
+            android:id="@+id/imageView_sport"
             android:layout_width="@dimen/dimen_category_main_small_items_width"
             android:layout_height="@dimen/dimen_category_main_small_items_height"
             android:src="@drawable/img_sport"
@@ -78,6 +81,7 @@
             android:adjustViewBounds="true"/>
 
         <ImageView
+            android:id="@+id/imageView_3d_flowers"
             android:layout_width="@dimen/dimen_category_main_big_items_width"
             android:layout_height="@dimen/dimen_category_main_big_items_height"
             android:src="@drawable/img_3d_flowers"
@@ -110,6 +114,7 @@
             android:adjustViewBounds="true"/>
 
         <ImageView
+            android:id="@+id/imageView_paper_flowers"
             android:layout_width="@dimen/dimen_category_main_small_items_width"
             android:layout_height="@dimen/dimen_category_main_small_items_height"
             android:src="@drawable/img_paper_flowers"

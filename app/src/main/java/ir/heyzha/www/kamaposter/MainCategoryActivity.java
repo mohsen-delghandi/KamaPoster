@@ -14,10 +14,15 @@ public class MainCategoryActivity extends AppCompatActivity {
 
     private ImageView imageViewNature,
             imageViewFaceAndSport,
-            imageViewBacksAnd3dBackgrounds,
+            imageViewBacksAndBackgrounds,
             imageViewKid,
             imageViewCityAndClassic,
             imageViewLuxury2019,
+            imageViewSpringFlowers,
+            imageViewAnimals,
+            imageViewSport,
+            imageView3dFlowers,
+            imageViewPaperFlowers,
             imageViewGraphiteAndSpecialImages;
 
     @Override
@@ -95,39 +100,18 @@ public class MainCategoryActivity extends AppCompatActivity {
         for (String folderPath : folderPaths)
             folderMaker(folderPath);
 
-//        folderMaker(Constants.IMAGES_LUXURY_2019);
-
         imageViewNature = findViewById(R.id.imageView_nature);
         imageViewFaceAndSport = findViewById(R.id.imageView_face_and_sport);
-        imageViewBacksAnd3dBackgrounds = findViewById(R.id.imageView_backs_and_3d_backgrounds);
+        imageViewBacksAndBackgrounds = findViewById(R.id.imageView_backs_and_3d_backgrounds);
         imageViewKid = findViewById(R.id.imageView_kid);
         imageViewCityAndClassic = findViewById(R.id.imageView_city_and_classic);
         imageViewLuxury2019 = findViewById(R.id.imageView_luxury_2019);
         imageViewGraphiteAndSpecialImages = findViewById(R.id.imageView_grahite_and_special_images);
-
-        imageViewNature.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, NatureCategoryActivity.class);
-                startActivity(i);
-            }
-        });
-
-        imageViewFaceAndSport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, FaceImagesAndSportCategoryActivity.class);
-                startActivity(i);
-            }
-        });
-
-        imageViewBacksAnd3dBackgrounds.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, BackgroundsCategoryActivity.class);
-                startActivity(i);
-            }
-        });
+        imageViewPaperFlowers = findViewById(R.id.imageView_paper_flowers);
+        imageView3dFlowers = findViewById(R.id.imageView_3d_flowers);
+        imageViewSport = findViewById(R.id.imageView_sport);
+        imageViewAnimals = findViewById(R.id.imageView_animals);
+        imageViewSpringFlowers = findViewById(R.id.imageView_spring_flowers);
 
         imageViewKid.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,10 +122,47 @@ public class MainCategoryActivity extends AppCompatActivity {
             }
         });
 
+        imageViewGraphiteAndSpecialImages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainCategoryActivity.this, GraphiteAndSpecialCategoryActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_GRAPHITE_AND_SPECIAL);
+                startActivity(i);
+            }
+        });
+
+        imageViewNature.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainCategoryActivity.this, NatureCategoryActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_NATURE);
+                startActivity(i);
+            }
+        });
+
+        imageViewFaceAndSport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainCategoryActivity.this, FaceImagesAndSportCategoryActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_FACE_AND_SPORT);
+                startActivity(i);
+            }
+        });
+
+        imageViewBacksAndBackgrounds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainCategoryActivity.this, BackgroundsCategoryActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_BACKS_AND_BACKGROUNDS);
+                startActivity(i);
+            }
+        });
+
         imageViewCityAndClassic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainCategoryActivity.this, CityAndClassicCategoryActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_CITY_AND_CLASSIC);
                 startActivity(i);
             }
         });
@@ -155,10 +176,47 @@ public class MainCategoryActivity extends AppCompatActivity {
             }
         });
 
-        imageViewGraphiteAndSpecialImages.setOnClickListener(new View.OnClickListener() {
+        imageViewSpringFlowers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, GraphiteAndSpecialCategoryActivity.class);
+                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_SPRING_FLOWERS);
+                startActivity(i);
+            }
+        });
+
+        imageViewAnimals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_ANIMALS);
+                startActivity(i);
+            }
+        });
+
+        imageViewSport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_SPORT);
+                startActivity(i);
+            }
+        });
+
+        imageView3dFlowers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_3D_FLOWERS);
+                startActivity(i);
+            }
+        });
+
+        imageViewPaperFlowers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                i.putExtra(Constants.CATEGORY, Constants.IMAGES_PAPER_FLOWERS);
                 startActivity(i);
             }
         });
