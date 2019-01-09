@@ -2,6 +2,7 @@ package ir.heyzha.www.kamaposter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +25,25 @@ public class MainCategoryActivity extends AppCompatActivity {
             imageView3dFlowers,
             imageViewPaperFlowers,
             imageViewGraphiteAndSpecialImages;
+
+    Handler handler;
+    Runnable r;
+
+
+    public void stopHandler() {
+        handler.removeCallbacks(r);
+    }
+
+    public void startHandler() {
+        handler.postDelayed(r, 3000);
+    }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        stopHandler();//stop first and then start
+        startHandler();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
