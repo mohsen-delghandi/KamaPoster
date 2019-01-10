@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-public class CityAndClassicCategoryActivity extends AppCompatActivity {
+public class CityAndClassicCategoryActivity extends BaseActivity {
 
     private ImageView imageViewBusiness,
             imageViewMap,

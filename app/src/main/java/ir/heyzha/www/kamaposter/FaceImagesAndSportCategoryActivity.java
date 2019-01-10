@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-public class FaceImagesAndSportCategoryActivity extends AppCompatActivity {
+public class FaceImagesAndSportCategoryActivity extends BaseActivity {
 
     private ImageView imageViewWoman,
             imageViewEyeAndLip,

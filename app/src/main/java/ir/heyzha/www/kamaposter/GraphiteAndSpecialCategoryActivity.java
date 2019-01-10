@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-public class GraphiteAndSpecialCategoryActivity extends AppCompatActivity {
+public class GraphiteAndSpecialCategoryActivity extends BaseActivity {
 
     private ImageView imageViewGraphite,
             imageViewStatueAndWind,

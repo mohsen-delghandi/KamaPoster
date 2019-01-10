@@ -5,13 +5,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
 
-public class MainCategoryActivity extends AppCompatActivity {
+public class MainCategoryActivity extends BaseActivity {
 
     private ImageView imageViewNature,
             imageViewFaceAndSport,
@@ -26,24 +27,7 @@ public class MainCategoryActivity extends AppCompatActivity {
             imageViewPaperFlowers,
             imageViewGraphiteAndSpecialImages;
 
-    Handler handler;
-    Runnable r;
 
-
-    public void stopHandler() {
-        handler.removeCallbacks(r);
-    }
-
-    public void startHandler() {
-        handler.postDelayed(r, 3000);
-    }
-
-    @Override
-    public void onUserInteraction() {
-        super.onUserInteraction();
-        stopHandler();//stop first and then start
-        startHandler();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

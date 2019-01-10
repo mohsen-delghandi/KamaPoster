@@ -15,7 +15,6 @@ import java.util.List;
 
 public class GalleryViewActivity extends FragmentActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

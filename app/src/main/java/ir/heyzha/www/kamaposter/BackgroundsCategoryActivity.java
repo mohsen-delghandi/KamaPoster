@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-public class BackgroundsCategoryActivity extends AppCompatActivity {
+public class BackgroundsCategoryActivity extends BaseActivity {
 
     private ImageView imageViewColorBacks,
             imageView3dBacks,

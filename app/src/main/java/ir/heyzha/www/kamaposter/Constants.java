@@ -3,6 +3,7 @@ package ir.heyzha.www.kamaposter;
 public class Constants {
     public static final String CATEGORY = "category";
     public static final String JPG = "jpg";
+    public static final String MP4 = "mp4";
     public static final String IMAGES = "images";
 
     public static final String IMAGES_LUXURY_2019 = "images_luxury_2019";

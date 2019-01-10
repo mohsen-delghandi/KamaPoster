@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-public class NatureCategoryActivity extends AppCompatActivity {
+public class NatureCategoryActivity extends BaseActivity {
 
     private ImageView imageViewWinter,
             imageViewAutumn,

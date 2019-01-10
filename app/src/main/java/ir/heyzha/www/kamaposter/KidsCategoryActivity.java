@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-public class KidsCategoryActivity extends AppCompatActivity {
+public class KidsCategoryActivity extends BaseActivity {
 
     private ImageView imageViewKiddy,
             imageViewCartoonCharacter,

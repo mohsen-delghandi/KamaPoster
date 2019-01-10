@@ -25,6 +25,7 @@
         <activity android:name=".CityAndClassicCategoryActivity"/>
         <activity android:name=".FaceImagesAndSportCategoryActivity"/>
         <activity android:name=".BackgroundsCategoryActivity"/>
+        <activity android:name=".VideoActivity"/>
 
         <receiver
             android:enabled="true"
