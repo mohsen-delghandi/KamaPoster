@@ -32,7 +32,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void startHandler() {
-        handler.postDelayed(runnable, 3000);
+        handler.postDelayed(runnable, 20000);
     }
 
     @Override
