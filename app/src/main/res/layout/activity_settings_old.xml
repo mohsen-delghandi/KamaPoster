@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_all_background"
+    android:layoutDirection="rtl">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_all_background" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="174.3px">
+
+            <ImageView
+                android:layout_width="68.9px"
+                android:layout_height="98.4px"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="47.8px"
+                android:layout_marginTop="40.8px"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_all_logo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="39.4px"
+                android:layout_marginRight="49.4px"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/profile_image"
+                        android:layout_width="69.1px"
+                        android:layout_height="69.1px"
+                        android:src="@drawable/profile"
+                        app:civ_border_color="#d8d8d8"
+                        app:civ_border_width="3px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="9.8px"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:text="مرتضی کریمی"
+                        android:textColor="#5b708c"
+                        android:textSize="13.5px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/iran_yekan_regular"
+                        android:text="مدیریت فروشگاه دکورا"
+                        android:textColor="#f2f2f2"
+                        android:textSize="15.7px" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="16.9px"
+                android:layout_height="16.9px"
+                android:layout_marginRight="74.5px"
+                android:background="@drawable/shape_gradient_background" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="11.5px"
+                android:fontFamily="@font/mohsen"
+                android:paddingBottom="10px"
+                android:text="تنظیمات"
+                android:textColor="@color/color_text"
+                android:textSize="41.9px"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="85.8px">
+
+            <RelativeLayout
+                android:layout_width="382.3px"
+                android:layout_height="382.3px"
+                android:background="@drawable/shape_settings_background">
+
+                <ImageView
+                    android:layout_width="149px"
+                    android:layout_height="149px"
+                    android:src="@drawable/ic_photo_update"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="به روز رسانی تصاویر"
+                    android:fontFamily="@font/iran_yekan_light"
+                    android:textSize="28.1px"
+                    android:textColor="@color/color_text"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18.1px"/>
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="50.6px"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_width="382.3px"
+                android:layout_height="382.3px"
+                android:background="@drawable/shape_settings_background">
+
+                <ImageView
+                    android:layout_width="149px"
+                    android:layout_height="149px"
+                    android:src="@drawable/ic_app_update"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="به روز رسانی اپلیکیشن"
+                    android:fontFamily="@font/iran_yekan_light"
+                    android:textSize="28.1px"
+                    android:textColor="@color/color_text"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18.1px"/>
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="50.6px"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_width="382.3px"
+                android:layout_height="382.3px"
+                android:background="@drawable/shape_settings_background">
+
+                <ImageView
+                    android:layout_width="149px"
+                    android:layout_height="149px"
+                    android:src="@drawable/ic_log_out"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="خروج از حساب کاربری"
+                    android:fontFamily="@font/iran_yekan_light"
+                    android:textSize="28.1px"
+                    android:textColor="@color/color_text"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18.1px"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:paddingBottom="48.7px"
+            android:paddingRight="47.8px"
+            android:paddingLeft="47.8px">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="25.3px"
+                android:paddingBottom="18.3px"
+                android:paddingTop="18.3px"
+                android:background="@drawable/shape_setting_footer_background">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#1f1f1f"
+                    android:textSize="28.1px"
+                    android:background="@drawable/shape_settings_text_background"
+                    android:text="خروج از تنظیمات"
+                    android:fontFamily="@font/iran_yekan_regular"
+                    android:paddingBottom="12.4px"
+                    android:paddingTop="5.6px"
+                    android:paddingRight="16.9px"
+                    android:paddingLeft="18.3px"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -83,4 +83,11 @@ public class FaceImagesAndSportCategoryActivity extends BaseActivity {
         i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY) + "/" + category);
         startActivity(i);
     }
+
+    private void goToActivity2whenoffline
+            (String category) {
+        Intent i = new Intent(FaceImagesAndSportCategoryActivity.this, GalleryViewActivity.class);
+        i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY) + "/" + category);
+        startActivity(i);
+    }
 }
