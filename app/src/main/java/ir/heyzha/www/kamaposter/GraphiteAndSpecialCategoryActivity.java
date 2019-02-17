@@ -2,7 +2,6 @@ package ir.heyzha.www.kamaposter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -11,7 +10,7 @@ public class GraphiteAndSpecialCategoryActivity extends BaseActivity {
     private ImageView imageViewGraphite,
             imageViewStatueAndWind,
             imageViewLux,
-            imageViewMusic;
+            imageViewSpecialImages;
 
     Intent intent;
 
@@ -34,7 +33,7 @@ public class GraphiteAndSpecialCategoryActivity extends BaseActivity {
         imageViewGraphite = findViewById(R.id.imageView_graphite);
         imageViewStatueAndWind = findViewById(R.id.imageView_statue_and_wind);
         imageViewLux = findViewById(R.id.imageView_lux);
-        imageViewMusic = findViewById(R.id.imageView_music);
+        imageViewSpecialImages = findViewById(R.id.imageView_special_images);
 
         imageViewGraphite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,16 +53,16 @@ public class GraphiteAndSpecialCategoryActivity extends BaseActivity {
                 goToActivity(Constants.IMAGES_LUX);
             }
         });
-        imageViewMusic.setOnClickListener(new View.OnClickListener() {
+        imageViewSpecialImages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToActivity(Constants.IMAGES_MUSIC);
+                goToActivity(Constants.IMAGES_SPECIAL_IMAGES);
             }
         });
     }
 
     private void goToActivity(String category) {
-        Intent i = new Intent(GraphiteAndSpecialCategoryActivity.this, GalleryViewActivity.class);
+        Intent i = new Intent(GraphiteAndSpecialCategoryActivity.this, ThumbnailsViewActivity.class);
         i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY) + "/" + category);
         startActivity(i);
     }

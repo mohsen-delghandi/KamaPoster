@@ -38,7 +38,7 @@ public class Constants {
     public static final String IMAGES_GRAPHITE = "images_graphite";
     public static final String IMAGES_STATUE_AND_WIND = "images_statue_and_wind";
     public static final String IMAGES_LUX = "images_lux";
-//initialized before :    public static final String IMAGES_MUSIC = "images_";
+    public static final String IMAGES_SPECIAL_IMAGES = "images_special_images";
 
     public static final String IMAGES_3D_FLOWERS = "images_3d_flowers";
 
@@ -65,4 +65,6 @@ public class Constants {
     public static final String IMAGES_FLOWER_BACKS = "images_flower_backs";
     public static final String IMAGES_COLOR_BACKS = "images_color_backs";
     public static final String IMAGES_3D_BACKS = "images_3d_backs";
+
+    public static final String POSITION = "position";
 }

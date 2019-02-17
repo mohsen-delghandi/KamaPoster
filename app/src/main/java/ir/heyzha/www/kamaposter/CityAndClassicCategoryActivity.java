@@ -71,7 +71,7 @@ public class CityAndClassicCategoryActivity extends BaseActivity {
     }
 
     private void goToActivity(String category) {
-        Intent i = new Intent(CityAndClassicCategoryActivity.this, GalleryViewActivity.class);
+        Intent i = new Intent(CityAndClassicCategoryActivity.this, ThumbnailsViewActivity.class);
         i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY) + "/" + category);
         startActivity(i);
     }

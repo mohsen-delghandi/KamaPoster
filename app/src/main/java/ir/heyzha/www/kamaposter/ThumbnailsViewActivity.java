@@ -3,7 +3,9 @@ package ir.heyzha.www.kamaposter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,7 +18,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThumbnailsViewActivity extends FragmentActivity {
+public class ThumbnailsViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +45,12 @@ public class ThumbnailsViewActivity extends FragmentActivity {
         for (String temporaryFile : files)
             images.add("file://" + folderPath + folderName + "/" + temporaryFile);
 
-
-        List<MediaInfo> infos = new ArrayList<>(images.size());
-        for (String url : images) infos.add(MediaInfo.mediaLoader(new PicassoImageLoader(url)));
-
-        ScrollGalleryView scrollGalleryView = findViewById(R.id.scroll_gallery_view);
-        scrollGalleryView
-                .setThumbnailSize(175)
-                .setZoom(false)
-                .setFragmentManager(getSupportFragmentManager())
-                .addMedia(infos);
-
-        RecyclerView recyclerViewThumnails = findViewById(R.id.recyclerView_thumbnails);
-        recyclerViewThumnails.setNestedScrollingEnabled(false);
-        recyclerViewThumnails.setLayoutManager(new GridLayoutManager(this, 3));
-        ThumbnailsAdapter thumbnailsAdapter = new ThumbnailsAdapter(this);
-        recyclerViewThumnails.setAdapter(thumbnailsAdapter);
-//        thumbnailsAdapter.updateAdapterData(response.body());
+        RecyclerView recyclerViewThumbnails = findViewById(R.id.recyclerView_thumbnails);
+        recyclerViewThumbnails.setNestedScrollingEnabled(false);
+        recyclerViewThumbnails.setLayoutManager(new GridLayoutManager(this,6, LinearLayoutManager.VERTICAL,false));
+        ThumbnailsAdapter thumbnailsAdapter = new ThumbnailsAdapter(this, intent);
+        recyclerViewThumbnails.setAdapter(thumbnailsAdapter);
+        thumbnailsAdapter.updateAdapterData(images);
         thumbnailsAdapter.notifyDataSetChanged();
     }
 }

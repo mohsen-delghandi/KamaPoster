@@ -49,6 +49,7 @@ public class GalleryViewActivity extends FragmentActivity {
                 .setThumbnailSize(175)
                 .setZoom(false)
                 .setFragmentManager(getSupportFragmentManager())
-                .addMedia(infos);
+                .addMedia(infos)
+                .setCurrentItem(intent.getExtras().getInt(Constants.POSITION));
     }
 }

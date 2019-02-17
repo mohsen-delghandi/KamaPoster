@@ -64,7 +64,7 @@ public class BackgroundsCategoryActivity extends BaseActivity {
     }
 
     private void goToActivity(String category) {
-        Intent i = new Intent(BackgroundsCategoryActivity.this, GalleryViewActivity.class);
+        Intent i = new Intent(BackgroundsCategoryActivity.this, ThumbnailsViewActivity.class);
         i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY) + "/" + category);
         startActivity(i);
     }

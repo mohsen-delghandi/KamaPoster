@@ -63,7 +63,7 @@ public class KidsCategoryActivity extends BaseActivity {
     }
 
     private void goToActivity(String category) {
-        Intent i = new Intent(KidsCategoryActivity.this, GalleryViewActivity.class);
+        Intent i = new Intent(KidsCategoryActivity.this, ThumbnailsViewActivity.class);
         i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY) + "/" + category);
         startActivity(i);
     }

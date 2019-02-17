@@ -52,12 +52,12 @@
                 android:src="@drawable/img_statue_and_wind" />
 
             <ImageView
-                android:id="@+id/imageView_music"
+                android:id="@+id/imageView_special_images"
                 android:layout_width="@dimen/dimen_category_nature_items_width"
                 android:layout_height="@dimen/dimen_category_nature_items_height"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img_music" />
+                android:src="@drawable/img_special_images" />
 
         </LinearLayout>
 

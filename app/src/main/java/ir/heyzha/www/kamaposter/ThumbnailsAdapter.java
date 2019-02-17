@@ -2,26 +2,27 @@ package ir.heyzha.www.kamaposter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 public class ThumbnailsAdapter extends RecyclerView.Adapter<ThumbnailsAdapter.UnitsViewHolder> {
 
     private Context mContext;
+    private Intent intent;
     private LayoutInflater mLayoutInflater;
     private List<String> mData;
 
-    public ThumbnailsAdapter(Context context) {
+    public ThumbnailsAdapter(Context context, Intent intent) {
         this.mContext = context;
+        this.intent = intent;
         this.mLayoutInflater = LayoutInflater.from(context);
     }
 
@@ -41,21 +42,22 @@ public class ThumbnailsAdapter extends RecyclerView.Adapter<ThumbnailsAdapter.Un
     public void onBindViewHolder(final UnitsViewHolder holder, final int position) {
         final List<String> currentModel = mData;
 
-        holder.imageViewThumbnail.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @SuppressLint("NewApi")
+        Glide
+                .with(mContext)
+                .load(currentModel.get(position))
+                .centerCrop()
+                .placeholder(R.drawable.loading)
+                .into(holder.imageViewThumbnail);
+
+        holder.imageViewThumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onGlobalLayout() {
-                int h = holder.imageViewThumbnail.getMeasuredWidth();
-                holder.imageViewThumbnail.setLayoutParams(new LinearLayout.LayoutParams(h, h));
-                holder.imageViewThumbnail.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            public void onClick(View v) {
+                Intent i = new Intent(mContext, GalleryViewActivity.class);
+                i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY));
+                i.putExtra(Constants.POSITION, position);
+                mContext.startActivity(i);
             }
         });
-
-        Picasso.get()
-                .load(mData.get(position))
-                .error(R.drawable.ic_error)
-                .placeholder(mContext.getResources().getDrawable(R.drawable.ic_error))
-                .into(holder.imageViewThumbnail);
     }
 
 

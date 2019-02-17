@@ -76,7 +76,7 @@ public class MainCategoryActivity extends BaseActivity {
                 Constants.IMAGES_GRAPHITE_AND_SPECIAL + "/" + Constants.IMAGES_GRAPHITE,
                 Constants.IMAGES_GRAPHITE_AND_SPECIAL + "/" + Constants.IMAGES_STATUE_AND_WIND,
                 Constants.IMAGES_GRAPHITE_AND_SPECIAL + "/" + Constants.IMAGES_LUX,
-                Constants.IMAGES_GRAPHITE_AND_SPECIAL + "/" + Constants.IMAGES_MUSIC,
+                Constants.IMAGES_GRAPHITE_AND_SPECIAL + "/" + Constants.IMAGES_SPECIAL_IMAGES,
 
                 Constants.IMAGES_3D_FLOWERS,
 
@@ -174,7 +174,7 @@ public class MainCategoryActivity extends BaseActivity {
         imageViewLuxury2019.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                Intent i = new Intent(MainCategoryActivity.this, ThumbnailsViewActivity.class);
                 i.putExtra(Constants.CATEGORY, Constants.IMAGES_LUXURY_2019);
                 startActivity(i);
             }
@@ -183,7 +183,7 @@ public class MainCategoryActivity extends BaseActivity {
         imageViewSpringFlowers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                Intent i = new Intent(MainCategoryActivity.this, ThumbnailsViewActivity.class);
                 i.putExtra(Constants.CATEGORY, Constants.IMAGES_SPRING_FLOWERS);
                 startActivity(i);
             }
@@ -192,7 +192,7 @@ public class MainCategoryActivity extends BaseActivity {
         imageViewAnimals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                Intent i = new Intent(MainCategoryActivity.this, ThumbnailsViewActivity.class);
                 i.putExtra(Constants.CATEGORY, Constants.IMAGES_ANIMALS);
                 startActivity(i);
             }
@@ -201,7 +201,7 @@ public class MainCategoryActivity extends BaseActivity {
         imageViewSport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                Intent i = new Intent(MainCategoryActivity.this, ThumbnailsViewActivity.class);
                 i.putExtra(Constants.CATEGORY, Constants.IMAGES_SPORT);
                 startActivity(i);
             }
@@ -210,7 +210,7 @@ public class MainCategoryActivity extends BaseActivity {
         imageView3dFlowers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                Intent i = new Intent(MainCategoryActivity.this, ThumbnailsViewActivity.class);
                 i.putExtra(Constants.CATEGORY, Constants.IMAGES_3D_FLOWERS);
                 startActivity(i);
             }
@@ -219,7 +219,7 @@ public class MainCategoryActivity extends BaseActivity {
         imageViewPaperFlowers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainCategoryActivity.this, GalleryViewActivity.class);
+                Intent i = new Intent(MainCategoryActivity.this, ThumbnailsViewActivity.class);
                 i.putExtra(Constants.CATEGORY, Constants.IMAGES_PAPER_FLOWERS);
                 startActivity(i);
             }

@@ -79,14 +79,14 @@ public class FaceImagesAndSportCategoryActivity extends BaseActivity {
     }
 
     private void goToActivity(String category) {
-        Intent i = new Intent(FaceImagesAndSportCategoryActivity.this, GalleryViewActivity.class);
+        Intent i = new Intent(FaceImagesAndSportCategoryActivity.this, ThumbnailsViewActivity.class);
         i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY) + "/" + category);
         startActivity(i);
     }
 
     private void goToActivity2whenoffline
             (String category) {
-        Intent i = new Intent(FaceImagesAndSportCategoryActivity.this, GalleryViewActivity.class);
+        Intent i = new Intent(FaceImagesAndSportCategoryActivity.this, ThumbnailsViewActivity.class);
         i.putExtra(Constants.CATEGORY, intent.getExtras().getString(Constants.CATEGORY) + "/" + category);
         startActivity(i);
     }
