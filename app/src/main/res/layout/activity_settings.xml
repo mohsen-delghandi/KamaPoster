@@ -111,9 +111,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="85.8px"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="85.8px">
+            android:orientation="horizontal">
 
             <RelativeLayout
                 android:layout_width="382.3px"
@@ -123,21 +123,21 @@
                 <ImageView
                     android:layout_width="149px"
                     android:layout_height="149px"
-                    android:src="@drawable/ic_photo_update"
                     android:layout_centerInParent="true"
                     android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_photo_update" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18.1px"
+                    android:fontFamily="@font/iran_yekan_light"
                     android:text="به روز رسانی تصاویر"
-                    android:fontFamily="@font/iran_yekan_light"
-                    android:textSize="28.1px"
                     android:textColor="@color/color_text"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="18.1px"/>
+                    android:textSize="28.1px" />
 
             </RelativeLayout>
 
@@ -153,21 +153,21 @@
                 <ImageView
                     android:layout_width="149px"
                     android:layout_height="149px"
-                    android:src="@drawable/ic_app_update"
                     android:layout_centerInParent="true"
                     android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_app_update" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="18.1px"
+                    android:fontFamily="@font/iran_yekan_light"
                     android:text="به روز رسانی اپلیکیشن"
-                    android:fontFamily="@font/iran_yekan_light"
-                    android:textSize="28.1px"
                     android:textColor="@color/color_text"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="18.1px"/>
+                    android:textSize="28.1px" />
 
             </RelativeLayout>
 
@@ -183,21 +183,21 @@
                 <ImageView
                     android:layout_width="149px"
                     android:layout_height="149px"
-                    android:src="@drawable/ic_log_out"
                     android:layout_centerInParent="true"
                     android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_log_out" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="خروج از حساب کاربری"
-                    android:fontFamily="@font/iran_yekan_light"
-                    android:textSize="28.1px"
-                    android:textColor="@color/color_text"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="18.1px"/>
+                    android:layout_marginBottom="18.1px"
+                    android:fontFamily="@font/iran_yekan_light"
+                    android:text="خروج از حساب کاربری"
+                    android:textColor="@color/color_text"
+                    android:textSize="28.1px" />
 
             </RelativeLayout>
 
@@ -207,31 +207,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom"
-            android:paddingBottom="48.7px"
+            android:paddingLeft="47.8px"
             android:paddingRight="47.8px"
-            android:paddingLeft="47.8px">
+            android:paddingBottom="48.7px">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape_setting_footer_background"
                 android:gravity="left"
                 android:paddingLeft="25.3px"
-                android:paddingBottom="18.3px"
                 android:paddingTop="18.3px"
-                android:background="@drawable/shape_setting_footer_background">
+                android:paddingBottom="18.3px">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#1f1f1f"
-                    android:textSize="28.1px"
                     android:background="@drawable/shape_settings_text_background"
-                    android:text="خروج از تنظیمات"
                     android:fontFamily="@font/iran_yekan_regular"
-                    android:paddingBottom="12.4px"
+                    android:paddingLeft="18.3px"
                     android:paddingTop="5.6px"
                     android:paddingRight="16.9px"
-                    android:paddingLeft="18.3px"/>
+                    android:paddingBottom="12.4px"
+                    android:text="خروج از تنظیمات"
+                    android:textColor="#1f1f1f"
+                    android:textSize="28.1px" />
 
             </LinearLayout>
 

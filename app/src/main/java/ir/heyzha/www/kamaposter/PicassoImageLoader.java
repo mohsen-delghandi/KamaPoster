@@ -42,7 +42,7 @@ public class PicassoImageLoader implements MediaLoader {
     public void loadMedia(Context context, final ImageView imageView, final MediaLoader.SuccessCallback callback) {
         Picasso.get()
                 .load(url)
-//                .placeholder(R.drawable.placeholder_image)
+                .placeholder(R.drawable.placeholder_image)
                 .into(imageView, new ImageCallback(callback));
     }
 
