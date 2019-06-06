@@ -67,4 +67,8 @@ public class Constants {
     public static final String IMAGES_3D_BACKS = "images_3d_backs";
 
     public static final String POSITION = "position";
+
+
+
+    public static String DOMAIN_NAME = "http://portal.kamaposter.com/";
 }

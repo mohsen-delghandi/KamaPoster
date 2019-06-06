@@ -1,16 +1,36 @@
 package ir.heyzha.www.kamaposter;
 
+import android.app.Activity;
+import android.app.DownloadManager;
+import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainCategoryActivity extends BaseActivity {
 
@@ -27,12 +47,25 @@ public class MainCategoryActivity extends BaseActivity {
             imageViewPaperFlowers,
             imageViewGraphiteAndSpecialImages;
 
+    private WebService mTService;
+    String versionCode;
 
+    private long enqueue;
+    private DownloadManager dm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_main);
+
+        WebProvider provider = new WebProvider();
+        mTService = provider.getTService();
+
+        try {
+            versionCode = getPackageManager().getPackageInfo(getPackageName(), 0).versionCode + "";
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         try {
             Process su = Runtime.getRuntime().exec("su");
@@ -224,6 +257,129 @@ public class MainCategoryActivity extends BaseActivity {
                 startActivity(i);
             }
         });
+        checkVersion(versionCode);
+    }
+
+    /**
+     * Used to download the file from url.
+     * <p/>
+     * 1. Download the file using Download Manager.
+     *
+     * @param url      Url.
+     * @param fileName File Name.
+     */
+    public void downloadFile(final Activity activity, final String url, final String fileName) {
+        try {
+            if (url != null && !url.isEmpty()) {
+                Uri uri = Uri.parse(url);
+                activity.registerReceiver(attachmentDownloadCompleteReceive, new IntentFilter(
+                        DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+
+                DownloadManager.Request request = new DownloadManager.Request(uri);
+                request.setMimeType(getMimeType(uri.toString()));
+                request.setTitle(fileName);
+                request.setDescription("Downloading attachment..");
+                request.allowScanningByMediaScanner();
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+                DownloadManager dm = (DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
+                dm.enqueue(request);
+            }
+        } catch (IllegalStateException e) {
+            Toast.makeText(activity, "Please insert an SD card to download file", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    /**
+     * Used to get MimeType from url.
+     *
+     * @param url Url.
+     * @return Mime Type for the given url.
+     */
+    private String getMimeType(String url) {
+        String type = null;
+        String extension = MimeTypeMap.getFileExtensionFromUrl(url);
+        if (extension != null) {
+            MimeTypeMap mime = MimeTypeMap.getSingleton();
+            type = mime.getMimeTypeFromExtension(extension);
+        }
+        return type;
+    }
+
+    /**
+     * Attachment download complete receiver.
+     * <p/>
+     * 1. Receiver gets called once attachment download completed.
+     * 2. Open the downloaded file.
+     */
+    BroadcastReceiver attachmentDownloadCompleteReceive = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+                long downloadId = intent.getLongExtra(
+                        DownloadManager.EXTRA_DOWNLOAD_ID, 0);
+                openDownloadedAttachment(context, downloadId);
+            }
+        }
+    };
+
+    /**
+     * Used to open the downloaded attachment.
+     *
+     * @param context    Content.
+     * @param downloadId Id of the downloaded file to open.
+     */
+    private void openDownloadedAttachment(final Context context, final long downloadId) {
+        DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        DownloadManager.Query query = new DownloadManager.Query();
+        query.setFilterById(downloadId);
+        Cursor cursor = downloadManager.query(query);
+        if (cursor.moveToFirst()) {
+            int downloadStatus = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS));
+            String downloadLocalUri = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
+            String downloadMimeType = cursor.getString(cursor.getColumnIndex(DownloadManager.COLUMN_MEDIA_TYPE));
+            if ((downloadStatus == DownloadManager.STATUS_SUCCESSFUL) && downloadLocalUri != null) {
+                openDownloadedAttachment(context, Uri.parse(downloadLocalUri), downloadMimeType);
+            }
+        }
+        cursor.close();
+    }
+
+    /**
+     * Used to open the downloaded attachment.
+     * <p/>
+     * 1. Fire intent to open download file using external application.
+     *
+     * 2. Note:
+     * 2.a. We can't share fileUri directly to other application (because we will get FileUriExposedException from Android7.0).
+     * 2.b. Hence we can only share content uri with other application.
+     * 2.c. We must have declared FileProvider in manifest.
+     * 2.c. Refer - https://developer.android.com/reference/android/support/v4/content/FileProvider.html
+     *
+     * @param context            Context.
+     * @param attachmentUri      Uri of the downloaded attachment to be opened.
+     * @param attachmentMimeType MimeType of the downloaded attachment.
+     */
+    private void openDownloadedAttachment(final Context context, Uri attachmentUri, final String attachmentMimeType) {
+        if(attachmentUri!=null) {
+            // Get Content Uri.
+            if (ContentResolver.SCHEME_FILE.equals(attachmentUri.getScheme())) {
+                // FileUri - Convert it to contentUri.
+                File file = new File(attachmentUri.getPath());
+                attachmentUri = FileProvider.getUriForFile(MainCategoryActivity.this, BuildConfig.APPLICATION_ID, file);;
+            }
+
+            Intent openAttachmentIntent = new Intent(Intent.ACTION_VIEW);
+            openAttachmentIntent.setDataAndType(attachmentUri, attachmentMimeType);
+            openAttachmentIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            try {
+                context.startActivity(openAttachmentIntent);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(context, "noooooooooo", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private void folderMaker(String folderPath) {
@@ -232,4 +388,161 @@ public class MainCategoryActivity extends BaseActivity {
         if (!file.exists())
             file.mkdirs();
     }
+
+    private void checkVersion(final String versionCode) {
+        Call<VersionModel> call = mTService.checkVersion(versionCode);
+        call.enqueue(new Callback<VersionModel>() {
+            @Override
+            public void onResponse(Call<VersionModel> call, final Response<VersionModel> response) {
+
+                if (!response.body().force_dl) {
+                    if (!response.body().new_version) {
+//                        Intent i = new Intent(SplashActivity.this, HomePageActivity.class);
+//                        startActivity(i);
+//                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+//                        finish();
+                    } else {
+//                        ivLogo.setVisibility(View.GONE);
+//                        ivUpdateLogo.setVisibility(View.VISIBLE);
+//                        ivLogoText.setVisibility(View.INVISIBLE);
+//                        tvUpdateText.setVisibility(View.VISIBLE);
+//                        tvUpdate.setVisibility(View.VISIBLE);
+
+//                        tvUpdate.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                String url = response.body().download_optional_url;
+//
+//                                Intent i = new Intent(Intent.ACTION_VIEW);
+//                                i.setData(Uri.parse(url));
+//                                startActivity(i);
+//                                finish();
+//                            }
+//                        });
+
+//                        tvNoUpdate.setVisibility(View.VISIBLE);
+//                        tvNoUpdate.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                Intent i = new Intent(SplashActivity.this, HomePageActivity.class);
+//                                startActivity(i);
+//                                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+//                                finish();
+//                            }
+//                        });
+                    }
+                } else {
+//                    ivLogo.setVisibility(View.GONE);
+//                    ivUpdateLogo.setVisibility(View.VISIBLE);
+//                    ivLogoText.setVisibility(View.INVISIBLE);
+//                    tvUpdateText.setVisibility(View.VISIBLE);
+//                    tvUpdate.setVisibility(View.VISIBLE);
+
+                    new AlertDialog.Builder(MainCategoryActivity.this)
+                            .setTitle("")
+                            .setMessage("Are you sure you want to update?")
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // Continue with delete operation
+
+//                                    String url = response.body().download_url;
+//
+//                                    Intent i = new Intent(Intent.ACTION_VIEW);
+//                                    i.setData(Uri.parse(url));
+//                                    startActivity(i);
+//                                    finish();
+
+//                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().download_url));
+//                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().download_url));
+//                                    startActivity(browserIntent);
+
+//                                    BroadcastReceiver receiver = new BroadcastReceiver() {
+//                                        @Override
+//                                        public void onReceive(Context context, Intent intent) {
+//                                            String action = intent.getAction();
+//                                            if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+//                                                long downloadId = intent.getLongExtra(
+//                                                        DownloadManager.EXTRA_DOWNLOAD_ID, 0);
+//                                                DownloadManager.Query query = new DownloadManager.Query();
+//                                                query.setFilterById(enqueue);
+//                                                Cursor c = dm.query(query);
+//                                                if (c.moveToFirst()) {
+//                                                    int columnIndex = c
+//                                                            .getColumnIndex(DownloadManager.COLUMN_STATUS);
+//                                                    if (DownloadManager.STATUS_SUCCESSFUL == c.getInt(columnIndex)) {
+//
+////                                                        Intent i = new Intent();
+////                                                        i.setAction(DownloadManager.ACTION_VIEW_DOWNLOADS);
+////                                                        startActivity(i);
+//
+//
+//                                                    }
+//                                                }
+//                                            }
+//                                        }
+//                                    };
+//
+//                                    registerReceiver(receiver, new IntentFilter(
+//                                            DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+//
+//
+//                                    dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+//                                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(response.body().download_url));
+//                                    enqueue = dm.enqueue(request);
+
+
+
+
+                                    downloadFile(MainCategoryActivity.this,response.body().download_url,"kama.apk");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            .setNegativeButton(android.R.string.no, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VersionModel> call, Throwable t) {
+                checkVersion(versionCode);
+            }
+        });
+    }
+
 }
