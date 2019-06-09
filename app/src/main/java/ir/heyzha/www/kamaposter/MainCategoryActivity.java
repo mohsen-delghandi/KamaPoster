@@ -1,5 +1,6 @@
 package ir.heyzha.www.kamaposter;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.ActivityNotFoundException;
@@ -15,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +54,34 @@ public class MainCategoryActivity extends BaseActivity {
 
     private long enqueue;
     private DownloadManager dm;
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                    checkVersion(versionCode);
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(MainCategoryActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -257,7 +287,9 @@ public class MainCategoryActivity extends BaseActivity {
                 startActivity(i);
             }
         });
-        checkVersion(versionCode);
+        ActivityCompat.requestPermissions(MainCategoryActivity.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                1);
     }
 
     /**
@@ -351,7 +383,7 @@ public class MainCategoryActivity extends BaseActivity {
      * Used to open the downloaded attachment.
      * <p/>
      * 1. Fire intent to open download file using external application.
-     *
+     * <p>
      * 2. Note:
      * 2.a. We can't share fileUri directly to other application (because we will get FileUriExposedException from Android7.0).
      * 2.b. Hence we can only share content uri with other application.
@@ -363,12 +395,13 @@ public class MainCategoryActivity extends BaseActivity {
      * @param attachmentMimeType MimeType of the downloaded attachment.
      */
     private void openDownloadedAttachment(final Context context, Uri attachmentUri, final String attachmentMimeType) {
-        if(attachmentUri!=null) {
+        if (attachmentUri != null) {
             // Get Content Uri.
             if (ContentResolver.SCHEME_FILE.equals(attachmentUri.getScheme())) {
                 // FileUri - Convert it to contentUri.
                 File file = new File(attachmentUri.getPath());
-                attachmentUri = FileProvider.getUriForFile(MainCategoryActivity.this, BuildConfig.APPLICATION_ID, file);;
+                attachmentUri = FileProvider.getUriForFile(MainCategoryActivity.this, BuildConfig.APPLICATION_ID, file);
+                ;
             }
 
             Intent openAttachmentIntent = new Intent(Intent.ACTION_VIEW);
@@ -395,144 +428,19 @@ public class MainCategoryActivity extends BaseActivity {
             @Override
             public void onResponse(Call<VersionModel> call, final Response<VersionModel> response) {
 
-                if (!response.body().force_dl) {
-                    if (!response.body().new_version) {
-//                        Intent i = new Intent(SplashActivity.this, HomePageActivity.class);
-//                        startActivity(i);
-//                        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-//                        finish();
-                    } else {
-//                        ivLogo.setVisibility(View.GONE);
-//                        ivUpdateLogo.setVisibility(View.VISIBLE);
-//                        ivLogoText.setVisibility(View.INVISIBLE);
-//                        tvUpdateText.setVisibility(View.VISIBLE);
-//                        tvUpdate.setVisibility(View.VISIBLE);
-
-//                        tvUpdate.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                String url = response.body().download_optional_url;
-//
-//                                Intent i = new Intent(Intent.ACTION_VIEW);
-//                                i.setData(Uri.parse(url));
-//                                startActivity(i);
-//                                finish();
-//                            }
-//                        });
-
-//                        tvNoUpdate.setVisibility(View.VISIBLE);
-//                        tvNoUpdate.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                Intent i = new Intent(SplashActivity.this, HomePageActivity.class);
-//                                startActivity(i);
-//                                overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
-//                                finish();
-//                            }
-//                        });
-                    }
-                } else {
-//                    ivLogo.setVisibility(View.GONE);
-//                    ivUpdateLogo.setVisibility(View.VISIBLE);
-//                    ivLogoText.setVisibility(View.INVISIBLE);
-//                    tvUpdateText.setVisibility(View.VISIBLE);
-//                    tvUpdate.setVisibility(View.VISIBLE);
-
+                if (response.body().force_dl) {
                     new AlertDialog.Builder(MainCategoryActivity.this)
-                            .setTitle("")
-                            .setMessage("Are you sure you want to update?")
+                            .setTitle("نسخه جدید")
+                            .setMessage("آیا می‌خواهید به‌روزرسانی انجام شود؟")
 
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            .setPositiveButton("تایید", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    // Continue with delete operation
 
-//                                    String url = response.body().download_url;
-//
-//                                    Intent i = new Intent(Intent.ACTION_VIEW);
-//                                    i.setData(Uri.parse(url));
-//                                    startActivity(i);
-//                                    finish();
-
-//                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().download_url));
-//                                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().download_url));
-//                                    startActivity(browserIntent);
-
-//                                    BroadcastReceiver receiver = new BroadcastReceiver() {
-//                                        @Override
-//                                        public void onReceive(Context context, Intent intent) {
-//                                            String action = intent.getAction();
-//                                            if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
-//                                                long downloadId = intent.getLongExtra(
-//                                                        DownloadManager.EXTRA_DOWNLOAD_ID, 0);
-//                                                DownloadManager.Query query = new DownloadManager.Query();
-//                                                query.setFilterById(enqueue);
-//                                                Cursor c = dm.query(query);
-//                                                if (c.moveToFirst()) {
-//                                                    int columnIndex = c
-//                                                            .getColumnIndex(DownloadManager.COLUMN_STATUS);
-//                                                    if (DownloadManager.STATUS_SUCCESSFUL == c.getInt(columnIndex)) {
-//
-////                                                        Intent i = new Intent();
-////                                                        i.setAction(DownloadManager.ACTION_VIEW_DOWNLOADS);
-////                                                        startActivity(i);
-//
-//
-//                                                    }
-//                                                }
-//                                            }
-//                                        }
-//                                    };
-//
-//                                    registerReceiver(receiver, new IntentFilter(
-//                                            DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-//
-//
-//                                    dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-//                                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(response.body().download_url));
-//                                    enqueue = dm.enqueue(request);
-
-
-
-
-                                    downloadFile(MainCategoryActivity.this,response.body().download_url,"kama.apk");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                                    downloadFile(MainCategoryActivity.this, response.body().download_url, "kama.apk");
 
                                 }
                             })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
-                            .setNegativeButton(android.R.string.no, null)
+                            .setNegativeButton("لغو", null)
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 }
