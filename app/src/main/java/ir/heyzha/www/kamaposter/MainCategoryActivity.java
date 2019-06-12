@@ -26,6 +26,8 @@ import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -86,6 +88,7 @@ public class MainCategoryActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_category_main);
 
         WebProvider provider = new WebProvider();

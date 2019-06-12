@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 android {
     compileSdkVersion 27
@@ -6,7 +21,7 @@ android {
         applicationId "ir.heyzha.www.kamaposter"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 9
+        versionCode 11
         versionName "1.0"
     }
     buildTypes {
@@ -39,4 +54,5 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.0.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     implementation 'com.google.code.gson:gson:2.6.1'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
 }
