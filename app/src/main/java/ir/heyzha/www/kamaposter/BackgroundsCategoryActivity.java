@@ -8,7 +8,8 @@ import android.widget.ImageView;
 
 public class BackgroundsCategoryActivity extends BaseActivity {
 
-    private ImageView imageViewColorBacks,
+    private ImageView
+            imageViewColorBacks,
             imageView3dBacks,
             imageViewFlowerBacks,
             imageView3d;
