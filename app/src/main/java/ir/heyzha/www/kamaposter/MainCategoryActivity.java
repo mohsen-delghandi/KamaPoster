@@ -15,6 +15,7 @@ import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -26,9 +27,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
@@ -60,6 +64,11 @@ public class MainCategoryActivity extends BaseActivity {
 
     private long enqueue;
     private DownloadManager dm;
+
+
+    private ToggleButton btn;
+    private WifiManager wifiManager;
+    private TextView textViewWiFi;
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -120,13 +129,36 @@ public class MainCategoryActivity extends BaseActivity {
 
         }
 
-        ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if ((conMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.DISCONNECTED)) {
-            WifiDialogClass wdc = new WifiDialogClass(this);
-            wdc.show();
-            Window window = wdc.getWindow();
-            window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        }
+
+
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
+        btn = (ToggleButton) findViewById(R.id.toggleButton);
+        btn.setChecked(wifiManager.isWifiEnabled());
+
+        btn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                wifiManager.setWifiEnabled(isChecked);
+            }
+
+        });
+
+        textViewWiFi = findViewById(R.id.textView_wifi);
+        textViewWiFi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                if ((conMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.DISCONNECTED)) {
+                    WifiDialogClass wdc = new WifiDialogClass(MainCategoryActivity.this);
+                    wdc.show();
+                    Window window = wdc.getWindow();
+                    window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                }
+            }
+        });
+
 
         String[] folderPaths = {
                 Constants.IMAGES_LUXURY_2019,
