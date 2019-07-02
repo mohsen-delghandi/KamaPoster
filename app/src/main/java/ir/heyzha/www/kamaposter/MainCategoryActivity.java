@@ -35,7 +35,9 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -128,7 +130,6 @@ public class MainCategoryActivity extends BaseActivity {
         } catch (InterruptedException e) {
 
         }
-
 
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
