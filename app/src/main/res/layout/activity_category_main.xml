@@ -1,174 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_background"
+        android:gravity="center"
+        android:layoutDirection="rtl"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_category_main_margin_left"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_spring_flowers"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_spring_flowers" />
+
+            <ImageView
+                android:id="@+id/imageView_backs_and_3d_backgrounds"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_back_and_3d_background" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="35px"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_animals"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_animals" />
+
+            <ImageView
+                android:id="@+id/imageView_nature"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_nature" />
+
+            <ImageView
+                android:id="@+id/imageView_sport"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_sport" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_category_main_margin_left"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_luxury_2019"
+                android:layout_width="@dimen/dimen_category_main_big_items_width"
+                android:layout_height="@dimen/dimen_category_main_big_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_luxury_2019" />
+
+            <ImageView
+                android:id="@+id/imageView_3d_flowers"
+                android:layout_width="@dimen/dimen_category_main_big_items_width"
+                android:layout_height="@dimen/dimen_category_main_big_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_3d_flowers" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_category_main_margin_left"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_kid"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_kid" />
+
+            <ImageView
+                android:id="@+id/imageView_face_and_sport"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_sport_and_face" />
+
+            <ImageView
+                android:id="@+id/imageView_paper_flowers"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_paper_flowers" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_city_and_classic"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_city_and_classic" />
+
+            <ImageView
+                android:id="@+id/imageView_grahite_and_special_images"
+                android:layout_width="@dimen/dimen_category_main_small_items_width"
+                android:layout_height="@dimen/dimen_category_main_small_items_height"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_graphite_and_special_images" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WiFi" />
+        android:layout_height="wrap_content">
+
+        <ToggleButton
+            android:visibility="gone"
+            android:id="@+id/toggleButton"
+            android:layout_width="@dimen/dimen_xxlarge"
+            android:layout_height="@dimen/dimen_large"
+            android:text="WiFi" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اتصال به وای‌فای"
+            android:padding="@dimen/padding_small"
+            android:textColor="#fff"
+            android:textSize="@dimen/font_medium" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView_wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="اتصال به وای‌فای"
-        android:textSize="@dimen/font_medium"
-        android:textColor="@color/colorAccent"
-        android:layout_below="@id/toggleButton"
-        android:background="@color/colorPrimary"/>
-
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layoutDirection="rtl"
-    android:gravity="center"
-    android:background="@drawable/img_background">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginLeft="@dimen/dimen_category_main_margin_left">
-
-        <ImageView
-            android:id="@+id/imageView_spring_flowers"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_spring_flowers"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:id="@+id/imageView_backs_and_3d_backgrounds"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_back_and_3d_background"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginLeft="35px">
-
-        <ImageView
-            android:id="@+id/imageView_animals"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_animals"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:id="@+id/imageView_nature"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_nature"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:id="@+id/imageView_sport"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_sport"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginLeft="@dimen/dimen_category_main_margin_left">
-
-        <ImageView
-            android:id="@+id/imageView_luxury_2019"
-            android:layout_width="@dimen/dimen_category_main_big_items_width"
-            android:layout_height="@dimen/dimen_category_main_big_items_height"
-            android:src="@drawable/img_luxury_2019"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:id="@+id/imageView_3d_flowers"
-            android:layout_width="@dimen/dimen_category_main_big_items_width"
-            android:layout_height="@dimen/dimen_category_main_big_items_height"
-            android:src="@drawable/img_3d_flowers"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginLeft="@dimen/dimen_category_main_margin_left">
-
-        <ImageView
-            android:id="@+id/imageView_kid"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_kid"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:id="@+id/imageView_face_and_sport"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_sport_and_face"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:id="@+id/imageView_paper_flowers"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_paper_flowers"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/imageView_city_and_classic"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_city_and_classic"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:id="@+id/imageView_grahite_and_special_images"
-            android:layout_width="@dimen/dimen_category_main_small_items_width"
-            android:layout_height="@dimen/dimen_category_main_small_items_height"
-            android:src="@drawable/img_graphite_and_special_images"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-    </LinearLayout>
-
-</LinearLayout>
+        android:text="انتخاب وای‌فای"
+        android:layout_below="@id/linearLayout"
+        android:padding="@dimen/padding_small"
+        android:textColor="#fff"
+        android:textSize="@dimen/font_medium" />
 
 </RelativeLayout>

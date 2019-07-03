@@ -19,6 +19,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
@@ -70,7 +71,8 @@ public class MainCategoryActivity extends BaseActivity {
 
     private ToggleButton btn;
     private WifiManager wifiManager;
-    private TextView textViewWiFi;
+    private TextView textViewWiFi,
+            textView;
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -131,8 +133,16 @@ public class MainCategoryActivity extends BaseActivity {
 
         }
 
-
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        wifiManager.setWifiEnabled(true);
+
+        textView = findViewById(R.id.textView);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wifiManager.setWifiEnabled(true);
+            }
+        });
 
         btn = (ToggleButton) findViewById(R.id.toggleButton);
         btn.setChecked(wifiManager.isWifiEnabled());
@@ -150,13 +160,15 @@ public class MainCategoryActivity extends BaseActivity {
         textViewWiFi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-                if ((conMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.DISCONNECTED)) {
-                    WifiDialogClass wdc = new WifiDialogClass(MainCategoryActivity.this);
-                    wdc.show();
-                    Window window = wdc.getWindow();
-                    window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                }
+
+                startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+//                ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+//                if ((conMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.DISCONNECTED)) {
+//                    WifiDialogClass wdc = new WifiDialogClass(MainCategoryActivity.this);
+//                    wdc.show();
+//                    Window window = wdc.getWindow();
+//                    window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//                }
             }
         });
 
