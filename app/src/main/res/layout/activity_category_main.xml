@@ -173,10 +173,11 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="اتصال به وای‌فای"
+            android:text="اتصال به مودم برقرار است."
             android:padding="@dimen/padding_small"
-            android:textColor="#fff"
-            android:textSize="@dimen/font_medium" />
+            android:textColor="@color/colorAccent"
+            android:background="@drawable/shape_settings_background"
+            android:textSize="@dimen/font_small" />
 
     </LinearLayout>
 
@@ -184,8 +185,9 @@
         android:id="@+id/textView_wifi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="انتخاب وای‌فای"
+        android:text="انتخاب شبکه‌ی وای‌فای"
         android:layout_below="@id/linearLayout"
+        android:background="@drawable/shape_gradient_background"
         android:padding="@dimen/padding_small"
         android:textColor="#fff"
         android:textSize="@dimen/font_medium" />

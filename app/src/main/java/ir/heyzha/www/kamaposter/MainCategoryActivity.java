@@ -103,6 +103,19 @@ public class MainCategoryActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (mWifi.isConnected()) {
+            textView.setText("اتصال به شبکه برقرار است.");
+        } else {
+            textView.setText("اتصال به شبکه برقرار نیست.");
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
@@ -137,12 +150,14 @@ public class MainCategoryActivity extends BaseActivity {
         wifiManager.setWifiEnabled(true);
 
         textView = findViewById(R.id.textView);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                wifiManager.setWifiEnabled(true);
-            }
-        });
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+        if (mWifi.isConnected()) {
+            textView.setText("اتصال به شبکه برقرار است.");
+        } else {
+            textView.setText("اتصال به شبکه برقرار نیست.");
+        }
 
         btn = (ToggleButton) findViewById(R.id.toggleButton);
         btn.setChecked(wifiManager.isWifiEnabled());

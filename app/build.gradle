@@ -21,7 +21,7 @@ android {
         applicationId "ir.heyzha.www.kamaposter"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 14
+        versionCode 15
         versionName "1.0.2"
     }
     buildTypes {
